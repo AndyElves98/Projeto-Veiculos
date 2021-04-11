@@ -1,0 +1,12 @@
+{% extends 'locadora/base.html' %}
+
+{% block content %}
+    <center><h2>Nova Locação</h2></center>
+    <form method="POST" class="table" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}
+         </div>
+        <center><button type="submit" class="save btn btn-default">Alterar / Salvar</button></center>
+    </form>
+{% endblock %}

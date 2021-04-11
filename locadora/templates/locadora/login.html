@@ -1,0 +1,15 @@
+{% extends 'locadora/base.html' %}
+{% block content %}
+    <form action="{% url 'autenticar_usuario' %}" method="post">
+    {% csrf_token %}
+        <div class="mb-3" >
+            <label for="exampleInputEmail1" class="form-label">Nome de Usuário</label>
+            <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Senha</label>
+            <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+    <center><button type="submit" class="btn btn-primary">Login/Entrar</button></center>
+    </form>
+{% endblock %}

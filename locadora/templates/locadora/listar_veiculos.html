@@ -1,0 +1,39 @@
+{% extends 'locadora/base.html' %}
+
+<html>
+    <head>
+        <title>Django Locadora</title>
+    </head>
+    <body>
+    {% block content %}
+        <center><h3> Veiculos no Sistema </h3></center>
+        <br>
+        <br>
+        <table class="table">
+                {% for veiculo in veiculos %}
+                    <tr>
+                        <td>
+                            <h5>Nome: {{ veiculo.nome }}</h5><br/>
+                            <img height="300" width="400" src="{{ veiculo.imagem.url }}">
+                            <br>
+                            <br>
+                            <h6>Descricao: {{ veiculo.descricao }}<br/></h6>
+                            <h6>Valor: {{ veiculo.valor }}<br/></h6>
+                            <br>
+                         	<td>
+                                <a class="btn btn-default" href="{% url 'editar_veiculo' id=veiculo.id %}">
+                                    <button type="button" class="btn btn-danger">Editar / Alterar</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-default" href="{% url 'delete_veiculo' id=veiculo.id %}">
+                                    <button type="button" class="btn btn-danger">Apagar</button>
+                                </a>
+                            </td>
+                        </td>
+                    </tr>
+                {% endfor %}  
+        </table>
+    {% endblock %}
+    </body>
+</html>

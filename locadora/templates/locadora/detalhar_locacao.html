@@ -1,0 +1,18 @@
+{% extends 'locadora/base.html' %}
+
+{% block content %}
+    <h3>{{ locacao.nome }}</h3>
+        Descricao: {{ locacao.descricao }}<br/>
+        Clientes: <br/>
+        {% for nome in locacao.cliente.all %}
+            {{ nome }}<br/>
+        {% endfor %}
+        {% for nome in locacao.veiculo.all %}
+            {{ nome }}<br/>
+        {% endfor %}
+        Placa: {{ locacao.placa }}<br/>
+        Data: {{ locacao.data }}<br/>
+        Hora: {{ locacao.Hora }}<br/>
+        Período: {{ locacao.periodo }}<br/>  
+        <br>
+{% endblock %}

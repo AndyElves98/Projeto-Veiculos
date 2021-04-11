@@ -1,0 +1,51 @@
+{% extends 'locadora/base.html' %}
+
+<html>
+    <head>
+        <title>Django Locadora</title>
+    </head>
+    <body>
+    {% block content %}
+    {% if user.is_authenticated %}
+        <center><h3>Bem Vindo, Usuário: {{user.username}}</h3></center>
+        <br>
+    {% else %}
+        <p>Você precisa realiar o login</p>
+    {% endif %}
+    <center><h3>Locações Solicitadas</h3></center>
+		    <table class="table">
+		         {% for locacao in locacoes %}
+		         	<tr>
+		         		<br>
+		         		<td>
+				            <h5>Descricao: {{ locacao.descricao }}<br/></h5>
+				            <h5>Cliente: <br/></h5>
+				            <h5>{% for nome in locacao.cliente.all %}</h5>
+				            <h5>    {{ nome }}<br/></h5>
+				            {% endfor %}
+				            <h5>{% for nome in locacao.veiculo.all %}</h5>
+				            <h5>    {{ nome }}<br/></h5>
+				            {% endfor %}
+				            <h5>Placa: {{ locacao.placa }}<br/></h5>
+				            <h5>Data: {{ locacao.data }}<br/></h5>
+				            <h5>Hora: {{ locacao.Hora }}<br/></h5>
+				            <h5>Período: {{ locacao.periodo }}<br/></h5>
+				            <br>
+				            <br>
+				            <td>
+				                <a class="btn btn-default" href="{% url 'editar_locacao' id=locacao.id %}">
+				                    <button type="button" class="btn btn-danger">Editar / Alterar</button>
+				                </a>
+				            </td>
+				            <td>
+				                <a class="btn btn-default" href="{% url 'delete_locacao' id=locacao.id %}">
+				                    <button type="button" class="btn btn-danger">Apagar</button>
+				                </a>
+				            </td>
+				        </td>
+				    </tr>
+		        {% endfor %}
+			</table>
+	    {% endblock %}
+    </body>
+</html>
